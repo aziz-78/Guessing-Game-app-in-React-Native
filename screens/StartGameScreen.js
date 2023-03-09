@@ -5,20 +5,20 @@ import PrimaryButton from '../components/ui/PrimaryButton';
 import Colors from '../constants/Colors';
 
 function StartGameScreen({onPickNumber}) {
-  const [enteredNumber, setEnteredNumber] = useState('');
+  const [enteredNumber, setEnteredNumber] = useState('');  // records number inserted by user
 
-  function numberInputHandler(enteredText) {
+  function numberInputHandler(enteredText) { //function to change state to value inserted by user
     setEnteredNumber(enteredText);
   }
 
-  function resetInputHandler() {
+  function resetInputHandler() { //resets value of text field
     setEnteredNumber('');
   }
 
-  function confirmInputHandler() {
+  function confirmInputHandler() { // it is the handler which works when we hit the confirm button 
     const chosenNumber = parseInt(enteredNumber);
 
-    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {// show alert if number not entered
       Alert.alert(
         'Invalid number!',
         'Number has to be a number between 1 and 99.',
@@ -27,7 +27,7 @@ function StartGameScreen({onPickNumber}) {
       return;
     }
 
-    onPickNumber(chosenNumber)
+    onPickNumber(chosenNumber) // passes number 
   }
 
   return (
